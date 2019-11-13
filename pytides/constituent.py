@@ -1,8 +1,9 @@
 
 import string
 import operator as op
+from functools import reduce
 import numpy as np
-import nodal_corrections as nc
+from . import nodal_corrections as nc
 
 class BaseConstituent(object):
 	xdo_int = {
@@ -27,7 +28,7 @@ class BaseConstituent(object):
 		return [self.xdo_int[l.upper()] for l in xdo if l in string.ascii_letters]
 
 	def coefficients_to_xdo(self, coefficients):
-		return ''.join([self.int_xdo[c] for c in coefficients])
+		return ''.join([self.int_xdo[c] for c in cooefficients])
 
 	def V(self, astro):
 		return np.dot(self.coefficients, self.astro_values(astro))
